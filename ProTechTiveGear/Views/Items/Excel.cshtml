@@ -1,0 +1,37 @@
+﻿@model ProTechTiveGear.Models.Item
+
+@{
+    ViewBag.Title = "Excel";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<head>
+    <script src="~/Scripts/tinymce/js/tinymce/tinymce.min.js"></script>
+
+    <script>tinymce.init({ selector: 'textarea' });</script>
+    <style>
+        .editor-field textarea {
+            width: 400;
+            height: 100px;
+        }
+    </style>
+
+
+
+</head>
+
+<h2>Thêm mới bằng Excel</h2>
+<body>
+    <form method="POST" action="/Items/ReadExcel" class="register-form" id="register-form" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="category-film"
+                   class="col-form-label">Chọn File Excel:</label>
+            <input type="file" class="form-control" id="category-film" name="fileExcel" required>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-success">Thêm</button>
+        </div>
+    </form>
+</body>
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>
