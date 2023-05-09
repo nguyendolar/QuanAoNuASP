@@ -102,11 +102,11 @@ namespace ProTechTiveGear.Controllers
 
 				Response.Cookies["avatar"].Value = atar;
 
-				return RedirectToAction("Index", "Admin");
+				return RedirectToAction("Index", "Items");
 			}
 			else
 			
-				ModelState.AddModelError("", "The user login or password  is incorrect..");
+				ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng");
 			
 			return View();
 

@@ -33,30 +33,14 @@ namespace ProTechTiveGear.Controllers
 		{
 			return data.Items.Where(d=>d.Active==true).OrderByDescending(a => a.DateImport).Take(count).ToList();
 		}
-		public ActionResult Index(/*FormCollection fc*/string search)
+		public ActionResult Index(string search, int? price)
         {
-			//var item = NewItem(8);
-			//if (!String.IsNullOrEmpty(search)){
-			//	item = item.Where(s => s.Name.Contains(search)).ToList();
-			//}
-			//return View(item);
-			//-----------------------------------------------
-			//string name = fc["txtname"];
-			//if (!String.IsNullOrEmpty(name))
-			//{
-			//	var item = from t in data.Items select t;
-
-			//	item = item.Where(s => s.Name.Contains(name));
-			//	return View(item);
-			//}
-			//return View(NewItem(8));
-			//var model = NewItem(8).Where(nv => nv.Name.Contains(search) || search == null).ToList();
-			
-			var model = data.Items.OrderByDescending(c => c.DateImport).Take(8).Where(nv => nv.Name.Contains(search) || search == null && nv.Active==true).ToList();
-			
+			var model = data.Items.OrderByDescending(c => c.DateImport).Take(16).Where(nv => nv.Name.Contains(search) || search == null && nv.Active==true).ToList();
+            if (price.HasValue)
+            {
+				model = model.Where(x => x.SellPrice <= Convert.ToDecimal(price)).ToList();
+			}
 			return View(model);
-
-		
 		}
 		public ActionResult Detail(int id)
 		{

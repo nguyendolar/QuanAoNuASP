@@ -39,7 +39,7 @@ namespace ProTechTiveGear.Controllers
         // GET: ItemTypes/Create
         public ActionResult Create()
         {
-            ViewBag.MenuID = new SelectList(db.Menus, "ID", "Name");
+            ViewBag.MenuID = new SelectList(db.Menus.Where(x => x.ID != 1), "ID", "Name");
             return View();
         }
 
